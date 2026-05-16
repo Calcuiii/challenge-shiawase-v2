@@ -103,7 +103,6 @@ const RESOURCES=[
 
 const p2=n=>String(n).padStart(2,"0");
 const dKey=d=>`${d.getFullYear()}-${p2(d.getMonth()+1)}-${p2(d.getDate())}`;
-const MF=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
 const DAYS_ID=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
 const DS=["Min","Sen","Sel","Rab","Kam","Jum","Sab"];
 const tod=new Date(); tod.setHours(0,0,0,0);
@@ -117,7 +116,6 @@ const isWD=d=>d.getDay()!==0&&d.getDay()!==6;
 const getCM=d=>{for(const m of CM){const s=new Date(2026,3+m.n,17);const e=m.n===6?new Date(2026,10,18):new Date(2026,4+m.n,17);if(d>=s&&d<e)return m;}return null;};
 const mPct=(ch,n)=>{const tot=4*HAB.length;const done=Array.from({length:4},(_,w)=>HAB.filter(h=>ch[`m${n}_w${w+1}_${h.id}`]).length).reduce((a,b)=>a+b,0);return{done,tot,pct:Math.round(done/tot*100)};};
 const totPct=ch=>{const tot=6*4*HAB.length;const done=Object.values(ch).filter(Boolean).length;return{done,tot,pct:tot>0?Math.round(done/tot*100):0};};
-const calDays=(yr,mo)=>{const f=new Date(yr,mo,1);const n=new Date(yr,mo+1,0).getDate();const days=Array(f.getDay()).fill(null);for(let d=1;d<=n;d++)days.push(new Date(yr,mo,d));return days;};
 
 const TS={
   prep:{bg:"#F0F9FF",bd:"#BAE6FD",tc:"#0369A1"},
